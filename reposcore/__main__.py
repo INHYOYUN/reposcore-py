@@ -178,10 +178,6 @@ def main():
                 log("❌ GitHub API 요청에 실패했습니다. 결과 파일을 생성하지 않고 종료합니다.")
                 log("ℹ️ 인증 없이 실행한 경우 요청 횟수 제한(403)일 수 있습니다. --token 옵션을 사용해보세요.")
                 sys.exit(1)
-
-            # ✅ 결과 디렉토리 생성 보장
-            os.makedirs(args.output, exist_ok=True)
-
             with open(cache_path, "w", encoding="utf-8") as f:
                 json.dump(analyzer.participants, f, indent=2, ensure_ascii=False)
         overall_participants = merge_participants(overall_participants, analyzer.participants)
